@@ -48,7 +48,7 @@ class CursoController extends Controller
         $nuevoId = $ultimoCurso ? $ultimoCurso->id_curso + 1 : 1;
 
         $request->merge(['id_curso' => $nuevoId]);
-        $request->merge(['nombre_curso' => $request->input('nombre')]);
+        $request->merge(['nombre_curso' => strtoupper($request->input('nombre'))]);
         $request->merge(['docente_id_docente' => $request->input('docente')]);
         $request->merge(['ciclo_id_ciclo' => $request->input('ciclo')]);
 
@@ -88,7 +88,7 @@ class CursoController extends Controller
     {
         $curso = curso::find($id);
 
-        $curso->nombre_curso = $request-> input('nombre');
+        $curso->nombre_curso =strtoupper($request-> input('nombre'));
         $curso -> docente_id_docente = $request ->input('docente');
         $curso -> ciclo_id_ciclo = $request ->input('ciclo');
 

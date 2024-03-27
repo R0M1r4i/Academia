@@ -25,9 +25,9 @@
     />
 
     <!-- Core CSS -->
-    <link rel="stylesheet" href="../assets/vendor/css/core.css" />
+    <link rel="stylesheet" href="{{asset('assets/vendor/css/core.css')}}" />
 
-    <script src="../assets/vendor/js/helpers.js"></script>
+    <script src="{{asset('assets/vendor/js/helpers.js')}}"> </script>
 
     <style>
 

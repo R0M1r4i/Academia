@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/assets/core.css', [\App\Http\Controllers\CoreCssController::class, 'coreCss']);
+
 
 
 
@@ -36,7 +36,7 @@ Route::get('/assets/core.css', [\App\Http\Controllers\CoreCssController::class, 
         Route::resource('curso', \App\Http\Controllers\CursoController::class);
         Route::resource('docente', \App\Http\Controllers\DocenteController::class);
 
-        Route::resource('nota', \App\Http\Controllers\NotaController::class);
+
         Route::resource('usuario', \App\Http\Controllers\UsuarioController::class);
         Route::resource('especialidad', \App\Http\Controllers\EspecialidadController::class);
         Route::resource('scanerQR', \App\Http\Controllers\ScanerQRController::class);
@@ -119,15 +119,6 @@ Route::get('/assets/core.css', [\App\Http\Controllers\CoreCssController::class, 
             Route::resource('estudiante', \App\Http\Controllers\EstudianteController::class);
             Route::get('/estudiantes/count', '\App\Http\Controllers\EstudianteController@countEstudiantes');
             Route::get('/search', '\App\Http\Controllers\EstudianteController@search')->name('estudiante.search');
-
-
-
-
-
-
-
-
-
 
     });
 

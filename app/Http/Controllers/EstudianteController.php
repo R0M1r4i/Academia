@@ -66,29 +66,31 @@ class EstudianteController extends Controller
      */
     public function store(StoreestudianteRequest $request)
     {
-        $rutaFoto = $request->file('foto')->store('foto/' . 'estudiante_' . $request->input('dni_estudiante'));
+        $file = $request->file('foto');
+        $filename = 'estudiante_' . $request->input('dni_estudiante') . '.' . $file->getClientOriginalExtension();
+        $file->move(public_path('foto'), $filename);
 
         // Crear el estudiante
         $estudiante = new estudiante;
-        $estudiante->dni_estudiante = $request->input('dni_estudiante');
-        $estudiante->nombre = $request->input('nombre');
-        $estudiante->apellidos = $request->input('apellido');
-        $estudiante->n_celular = $request->input('celular');
-        $estudiante->direccion = $request->input('direccion');
-        $estudiante->colegio = $request->input('colegio');
+        $estudiante->dni_estudiante = strtoupper($request->input('dni_estudiante'));
+        $estudiante->nombre = strtoupper($request->input('nombre'));
+        $estudiante->apellidos = strtoupper($request->input('apellido'));
+        $estudiante->n_celular = strtoupper($request->input('celular'));
+        $estudiante->direccion = strtoupper($request->input('direccion'));
+        $estudiante->colegio = strtoupper($request->input('colegio'));
         $estudiante->sede = $request->input('sede');
-        $estudiante->celular_apoderado = $request->input('celularApoderado');
-        $estudiante->estado_de_pago = $request->input('estado');
+        $estudiante->celular_apoderado = strtoupper($request->input('celularApoderado'));
+        $estudiante->estado_de_pago = strtoupper($request->input('estado'));
         $estudiante->pago = $request->input('pago');
-        $estudiante->carrera_id_carrera = $request->input('carrera');
-        $estudiante->especialidad = $request->input('especialidad');
-        $estudiante->area_academica_id_area = $request->input('area');
-        $estudiante->ciclo_id_ciclo = $request->input('ciclo');
-        $estudiante->referencia = $request->input('referencia');
-        $estudiante->conducta = 'excelente';
-        $estudiante->observacion = $request->input('observacion');
-        $estudiante->horario_id_horario = $request->input('horario');
-        $estudiante->foto = $rutaFoto;
+        $estudiante->carrera_id_carrera = strtoupper($request->input('carrera'));
+        $estudiante->especialidad = strtoupper($request->input('especialidad'));
+        $estudiante->area_academica_id_area = strtoupper($request->input('area'));
+        $estudiante->ciclo_id_ciclo = strtoupper($request->input('ciclo'));
+        $estudiante->referencia = strtoupper($request->input('referencia'));
+        $estudiante->conducta = strtoupper('excelente');
+        $estudiante->observacion = strtoupper($request->input('observacion'));
+        $estudiante->horario_id_horario = strtoupper($request->input('horario'));
+        $estudiante->foto = $filename;
 
         // Guardar el estudiante
         $estudiante->save();
@@ -171,7 +173,6 @@ class EstudianteController extends Controller
     {
         $estudiante = estudiante::find($id);
 
-        // Verifica si se subió una foto
         if ($request->hasFile('foto')) {
             // Elimina la foto antigua si existe
             if ($estudiante->foto) {
@@ -179,29 +180,31 @@ class EstudianteController extends Controller
             }
 
             // Almacena la nueva foto y obtén la ruta
-            $rutaFoto = $request->file('foto')->store('foto/' . 'estudiante_' . $request->input('dni_estudiante'));
+            $file = $request->file('foto');
+            $filename = 'estudiante_' . $request->input('dni_estudiante') . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('foto'), $filename);
 
             // Asigna la nueva ruta de la foto al estudiante
-            $estudiante->foto = $rutaFoto;
+            $estudiante->foto = $filename;
         }
 
-        $estudiante->nombre = $request->input('nombre');
-        $estudiante->apellidos = $request->input('apellido');
-        $estudiante->n_celular = $request->input('celular');
-        $estudiante->direccion = $request->input('direccion');
-        $estudiante->colegio = $request->input('colegio');
+        $estudiante->nombre = strtoupper($request->input('nombre'));
+        $estudiante->apellidos = strtoupper($request->input('apellido'));
+        $estudiante->n_celular = strtoupper($request->input('celular'));
+        $estudiante->direccion = strtoupper($request->input('direccion'));
+        $estudiante->colegio = strtoupper($request->input('colegio'));
         $estudiante->sede = $request->input('sede');
-        $estudiante->celular_apoderado = $request->input('celularApoderado');
+        $estudiante->celular_apoderado = strtoupper($request->input('celularApoderado'));
         $estudiante->estado_de_pago = $request->input('estado');
-        $estudiante->pago = $request->input('pago');
-        $estudiante->carrera_id_carrera = $request->input('carrera');
-        $estudiante->especialidad = $request->input('especialidad');
-        $estudiante->area_academica_id_area = $request->input('area');
-        $estudiante->ciclo_id_ciclo = $request->input('ciclo');
-        $estudiante->referencia = $request->input('referencia');
-        $estudiante->conducta = $request->input('conducta');
-        $estudiante->observacion = $request->input('observacion');
-        $estudiante->horario_id_horario = $request->input('horario');
+        $estudiante->pago = strtoupper($request->input('pago'));
+        $estudiante->carrera_id_carrera = strtoupper($request->input('carrera'));
+        $estudiante->especialidad = strtoupper($request->input('especialidad'));
+        $estudiante->area_academica_id_area = strtoupper($request->input('area'));
+        $estudiante->ciclo_id_ciclo = strtoupper($request->input('ciclo'));
+        $estudiante->referencia = strtoupper($request->input('referencia'));
+        $estudiante->conducta = strtoupper('excelente');
+        $estudiante->observacion = strtoupper($request->input('observacion'));
+        $estudiante->horario_id_horario = strtoupper($request->input('horario'));
 
         $estudiante->save();
 

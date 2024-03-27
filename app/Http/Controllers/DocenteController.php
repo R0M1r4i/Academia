@@ -46,13 +46,14 @@ class DocenteController extends Controller
     {
         $request->merge(['dni_docente'=>$request->input('dni_docente')]);
 
-        $request->merge(['nombre_docente' => $request->input('nombre')]);
-        $request->merge(['apellido_docente'=> $request->input('apellido')]);
-        $request->merge(['celular' => $request->input('celular')]);
-        $request->merge(['horario_inicio'=>$request->input('horario_inicio')]);
-        $request->merge(['horario_final' => $request->input('horario_final')]);
+        $request->merge(['nombre_docente' => strtoupper($request->input('nombre'))]);
+        $request->merge(['apellido_docente'=> strtoupper($request->input('apellido'))]);
+        $request->merge(['celular' => strtoupper($request->input('celular'))]);
+        $request->merge(['horario_inicio'=> strtoupper($request->input('horario_inicio'))]);
+        $request->merge(['horario_final' => strtoupper($request->input('horario_final'))]);
 
         $docente = docente::create($request->all());
+
         return redirect()->route('docente.index');
     }
 
@@ -97,13 +98,13 @@ class DocenteController extends Controller
     {
         $docente = docente::find($dni_docente);
 
-        $docente -> nombre_docente = $request->input('nombre');
-        $docente -> apellido_docente = $request ->input('apellido');
-        $docente -> dni_docente = $request -> input('dni_docente');
-        $docente -> celular = $request -> input('celular');
-        $docente -> rendimiento = $request -> input('rendimiento');
-        $docente -> horario_inicio = $request -> input('horario_inicio');
-        $docente -> horario_final = $request -> input('horario_final');
+        $docente -> nombre_docente = strtoupper($request->input('nombre'));
+        $docente -> apellido_docente = strtoupper($request ->input('apellido'));
+        $docente -> dni_docente = strtoupper($request -> input('dni_docente'));
+        $docente -> celular = strtoupper($request -> input('celular'));
+        $docente -> rendimiento = strtoupper($request -> input('rendimiento'));
+        $docente -> horario_inicio = strtoupper($request -> input('horario_inicio'));
+        $docente -> horario_final = strtoupper($request -> input('horario_final'));
 
         $docente -> save();
         return redirect()->route('docente.index');

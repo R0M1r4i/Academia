@@ -508,28 +508,19 @@
                                                                 <div class="row g-2">
 
                                                                     <div class="col mb-0">
-                                                                        <label for="emailLarge" class="form-label">Turno</label>
-                                                                        <p>{{$estudiante->horario -> h_inicio ?? 'N/A'}}</p>
-
-                                                                    </div>
-
-                                                                    <div class="col mb-0">
                                                                         <label for="emailLarge" class="form-label">Sede</label>
                                                                         <p>{{$estudiante->sede}}</p>
                                                                     </div>
 
+
+
+                                                                    <div class="col mb-0">
+                                                                        <label for="emailLarge" class="form-label">Observacion</label>
+                                                                        <p>{{$estudiante->observacion}}</p>
+                                                                    </div>
                                                                 </div>
 
 
-                                                                <div class="col mb-0">
-                                                                    <label for="emailLarge" class="form-label">Observacion</label>
-                                                                    <p>{{$estudiante->observacion}}</p>
-                                                                </div>
-
-                                                                <div class="col mb-0 mt-2">
-                                                                    <label for="emailLarge" class="form-label">Foto del Estudiante</label>
-                                                                    <p>}</p>
-                                                                </div>
                                                             </fieldset>
 
                                                         </div>

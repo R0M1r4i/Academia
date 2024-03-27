@@ -27,6 +27,7 @@
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
+
     <title>Academia Municipal</title>
 
     <meta name="description" content="" />
@@ -65,6 +66,17 @@
 
     @stack('link')
     <!-- Page CSS -->
+
+    <style>
+        .form-control {
+            text-transform: uppercase;
+        }
+    </style>
+
+
+
+
+
 </head>
 
 
@@ -376,6 +388,18 @@
 
 <!-- Page JS -->
 
+<!-- evitar  pegar -->
+
+<script>
+    window.onload = function() {
+        var inputs = document.getElementsByClassName('form-control');
+        for (var i = 0; i < inputs.length; i++) {
+            inputs[i].onpaste = function(e) {
+                e.preventDefault();
+            }
+        }
+    }
+</script>
 
 
 <!--SweetAlert de Errores -->

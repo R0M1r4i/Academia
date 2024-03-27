@@ -39,7 +39,7 @@ class PDFController extends Controller
             '', '', false, 300, '', false, false, 0, 'C', false, false, false, false);
 
         // Agrega la imagen del estudiante
-        $fotoEstudiante = storage_path('app/' . $estudiante->foto); // Asegúrate de que esta sea la ruta correcta a la imagen
+        $fotoEstudiante = public_path('foto/' . $estudiante->foto); // Asegúrate de que esta sea la ruta correcta a la imagen
         $pdf->Image($fotoEstudiante, 36, 62, 33, 40, '', '', 'T', false, 300, '', false, false, 1, false, false, false);
 
 

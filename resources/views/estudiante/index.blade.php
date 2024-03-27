@@ -109,7 +109,7 @@
 
                                             <button type="button" class="btn btn-sm btn-success btn-editar" data-bs-toggle="modal" data-bs-target="#editar" data-id="{{ $estudiante->id_estudiante }}" data-nombre="{{ $estudiante->nombre}}"
                                                     data-apellido ="{{ $estudiante->apellidos }}" data-dni_estudiante ="{{ $estudiante->dni_estudiante }}" data-celular ="{{ $estudiante->n_celular }}" data-direccion ="{{ $estudiante->direccion }}" data-referencia = "{{$estudiante->referencia}}"
-                                                    data-colegio ="{{ $estudiante->colegio}}" data-sede ="{{ $estudiante->sede }}" data-celular-apoderado="{{ $estudiante->celular_apoderado}}" data-estado ="{{$estudiante->estado_de_pago}}"
+                                                    data-colegio ="{{ $estudiante->colegio}}" data-sede ="{{ $estudiante->sede }}" data-celular-apoderado="{{ $estudiante->celular_apoderado}}" data-estado = "{{$estudiante->estado_de_pago}}"
                                                     data-pago ="{{ $estudiante->pago }}" data-carrera ="{{ $estudiante->carrera_id_carrera }}"    data-area ="{{ $estudiante->area_academica_id_area }}" data-ciclo ="{{$estudiante->ciclo_id_ciclo}}"
                                                     data-conducta ="{{$estudiante -> conducta}}" data-observacion ="{{$estudiante->observacion}}" data-especialidad = "{{$estudiante->especialidad}}" data-horario="{{$estudiante-> horario_id_horario}}" data-foto="{{$estudiante->foto}}" >
                                                 {{ __() }}
@@ -161,7 +161,7 @@
                                                 <div class="row g-2">
                                                     <div class="col mb-0">
                                                         <label for="nameLarge" class="form-label">Nombre</label>
-                                                        <input type="text" id="txt-nombre" class="form-control" placeholder="Nombre" name="nombre" required
+                                                        <input type="text" id="txt-nombre" class="form-control " placeholder="Nombre" name="nombre" required
                                                                onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || event.charCode == 32)"
                                                         />
                                                     </div>
@@ -261,8 +261,8 @@
                                                                 <div class="row g-2">
                                                                     <div class="col mb-0">
                                                                         <label for="emailLarge" class="form-label">Sede</label>
-                                                                        <select class="form-select" id="txt-sede" aria-label="Default select example" name="sede" required>
-                                                                            <option value="9 de Diciembre">9 de Diciembre</option>
+                                                                        <select class="form-select" id="txt-sede" aria-label="Default select example" name="sede" >
+                                                                            <option selected value="9 de Diciembre">9 de Diciembre</option>
                                                                         </select>
                                                                     </div>
 
@@ -276,6 +276,7 @@
 
                                                                 <div class="col mb-0 mt-2">
                                                                     <label for="emailLarge" class="form-label">Foto del Estudiante</label>
+
                                                                     <div class="input-group">
                                                                         <input type="file" name="foto" id="img-foto" class="form-control" />
                                                                     </div>
@@ -299,7 +300,7 @@
                                                                 <div class="row g-2">
                                                                     <div class="col mb-0">
                                                                         <label for="emailLarge" class="form-label">Estado de Pago</label>
-                                                                        <select class="form-select" id="txt-estado" aria-label="Default select example" name="estado" required>
+                                                                        <select class="form-select" id="txt-estado3" aria-label="Default select example" name="estado" required>
                                                                             <option selected>Seleccionar...</option>
                                                                             <option value="Completo">Pendiente</option>
                                                                             <option value="Pendiente">Completo</option>
@@ -384,7 +385,7 @@
                             </div>
                         </div>
 
-            <!-- Modal Vista -->
+            <
 
 
 
@@ -545,7 +546,7 @@
                                                                     <div class="row g-2">
                                                                         <div class="col mb-0">
                                                                             <label for="emailLarge" class="form-label">Estado de Pago</label>
-                                                                            <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example" name="estado" required>
+                                                                            <select class="form-select"  aria-label="Default select example" name="estado" required>
                                                                                 <option selected>Seleccionar...</option>
                                                                                 <option value="Completo">Pendiente</option>
                                                                                 <option value="Pendiente">Completo</option>
@@ -662,6 +663,7 @@
     @endif
 
 
+
     <script>
         //asignar evento click a todos los botones con nombre de clase "btn-editar"
         //Para este caso usaremos JQUERY
@@ -698,7 +700,7 @@
             $("#txt-colegio").val(colegio);
             $("#txt-sede").val(sede);
             $("#txt-celularApoderado").val(celular_apoderado);
-            $("#txt-estado").val(estado_de_pago);
+            $("#txt-estado3").val(estado_de_pago);
             $("#txt-pago").val(pago);
             $("#txt-carrera").val(carrera);
             $("#txt-especialidad").val(especialidad);
@@ -719,30 +721,19 @@
     </script>
 
     <script>
-        $(document).on("click",".btn-vista",function(){
-            //variables
-            $("#txt-nombre2").val(nombre);
-            $("#txt-apellido2").val(apellidos);
-            $("#txt-dni_estudiante2").val(dni_estudiante);
-            $("#txt-celular2").val(n_celular);
-            $("#txt-direccion2").val(direccion);
-            $("#txt-referencia2").val(referencia);
-            $("#txt-colegio2").val(colegio);
-            $("#txt-sede2").val(sede);
-            $("#txt-celularApoderado2").val(celular_apoderado);
-            $("#txt-estado2").val(estado_de_pago);
-            $("#txt-pago2").val(pago);
-            $("#txt-carrera2").val(carrera);
-            $("#txt-especialidad2").val(especialidad);
-            $("#txt-area2").val(area);
-            $("#txt-ciclo2").val(ciclo);
-            $("#txt-conducta2").val(conducta);
-            $("#txt-observacion2").val(observacion);
-            $("#txt-horario2").val(horario);
-            // Muestra la foto actual
-            $("#current-photo2").attr('src', foto);
-        })
+        $('#txt-area').change(function() {
+            var id_area = $(this).val();
+            $.get('/carreras/' + id_area, function(data) {
+                var select = $('#txt-carrera');
+                select.empty();
+                $.each(data,function(key, value) {
+                    select.append('<option value=' + value.id_carrera + '>' + value.nombre_carrera + '</option>');
+                });
+            });
+        });
+
     </script>
+
 
     <script>
         $(document).on("click",".btn-editar",function(){
@@ -785,19 +776,7 @@
 
     <!-- script para select en tiempo Real-->
 
-    <script>
-        $('#txt-area').change(function() {
-            var id_area = $(this).val();
-            $.get('/carreras/' + id_area, function(data) {
-                var select = $('#txt-carrera');
-                select.empty();
-                $.each(data,function(key, value) {
-                    select.append('<option value=' + value.id_carrera + '>' + value.nombre_carrera + '</option>');
-                });
-            });
-        });
 
-    </script>
 
     <script>
         $('#txt-area2').change(function() {

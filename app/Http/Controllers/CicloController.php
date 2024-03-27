@@ -33,7 +33,7 @@ class CicloController extends Controller
      */
     public function store(StorecicloRequest $request)
     {
-        $request->merge(['nombre_ciclo' => $request->input('nombre')]); //agrega nuevos elementos
+        $request->merge(['nombre_ciclo' => strtoupper($request->input('nombre'))]); //agrega nuevos elementos
         $request ->merge(['inico'=>$request ->input('inicio')]);
         $request ->merge(['fin'=>$request -> input('fin')]);
 
@@ -64,7 +64,7 @@ class CicloController extends Controller
     public function update(Request $request, $id)
     {
         $ciclo = ciclo::find($id);
-        $ciclo->nombre_ciclo = $request->input('nombre'); // Actualiza el nombre
+        $ciclo->nombre_ciclo = strtoupper($request->input('nombre')); // Actualiza el nombre
         $ciclo->inicio = $request -> input( 'inicio');
         $ciclo->fin = $request -> input('fin');
         $ciclo->save();

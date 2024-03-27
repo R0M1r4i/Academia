@@ -34,7 +34,7 @@ class CarreraController extends Controller
     public function store(StorecarreraRequest $request)
     {
 
-        $request ->merge(['nombre_carrera'=>$request ->input('nombre')]);
+        $request ->merge(['nombre_carrera'=>strtoupper($request ->input('nombre'))]);
         $request -> merge(['area_academica_id_area'=> $request ->input('area')]);
 
         $carrera = carrera::create($request->all());
@@ -64,7 +64,7 @@ class CarreraController extends Controller
     {
         $carrera = carrera::find($id);
 
-        $carrera -> nombre_carrera = $request ->input('nombre');
+        $carrera -> nombre_carrera = strtoupper($request ->input('nombre'));
         $carrera -> area_academica_id_area = $request ->input('area');
 
         $carrera -> save();
