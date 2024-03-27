@@ -723,7 +723,10 @@
     <script>
         $('#txt-area').change(function() {
             var id_area = $(this).val();
-            $.get('/carreras/' + id_area, function(data) {
+            var url = '{{ route('area_academica.getCarreras', ['id_area' => 'ID_AREA']) }}';
+            url = url.replace('ID_AREA', id_area);
+
+            $.get(url, function(data) {
                 var select = $('#txt-carrera');
                 select.empty();
                 $.each(data,function(key, value) {
@@ -731,8 +734,8 @@
                 });
             });
         });
-
     </script>
+
 
 
     <script>
@@ -748,7 +751,7 @@
 
     <script>
         function updateCount() {
-            $.get('/estudiantes/count', function(data) {
+            $.get('{{ route('estudiante.countEstudiantes') }}', function(data) {
                 // Actualiza tu contador
                 $('#contador').text(data);
             });
@@ -781,7 +784,10 @@
     <script>
         $('#txt-area2').change(function() {
             var id_area = $(this).val();
-            $.get('/carreras/' + id_area, function(data) {
+            var url = '{{ route('area_academica.getCarreras', ['id_area' => 'ID_AREA']) }}';
+            url = url.replace('ID_AREA', id_area);
+
+            $.get(url, function(data) {
                 var select = $('#txt-carrera2');
                 select.empty();
                 $.each(data,function(key, value) {
@@ -789,7 +795,6 @@
                 });
             });
         });
-
     </script>
 
     <!-- limpiar entradas -->

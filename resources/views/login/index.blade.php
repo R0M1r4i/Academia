@@ -31,6 +31,8 @@
 
     <style>
 
+
+
         .authentication-wrapper {
             display: flex;
             flex-basis: 100%;
@@ -211,14 +213,14 @@
                                 placeholder="Enter your email or username"
                                 autofocus
                                 required
+                                autocomplete="off"
+                                onkeypress="return validarInput(event.key)"
                             />
                         </div>
                         <div class="mb-3 form-password-toggle">
                             <div class="d-flex justify-content-between">
                                 <label class="form-label" for="password">Contraseña</label>
-                                <a href="auth-forgot-password-basic.html">
-
-                                </a>
+                                <a href="auth-forgot-password-basic.html"></a>
                             </div>
                             <div class="input-group input-group-merge">
                                 <input
@@ -228,7 +230,9 @@
                                     name="contraseña"
                                     placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                                     aria-describedby="password"
+                                    autocomplete="off"
                                     required
+                                    onkeypress="return validarInput(event.key)"
                                 />
                                 <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                             </div>
@@ -250,6 +254,46 @@
         </div>
     </div>
 </div>
+
+
+<script>
+
+    // Almacenar una referencia al formulario
+    const form = document.getElementById('formAuthentication');
+
+    // Detectar cuando se cierra la pestaña/ventana
+    window.onbeforeunload = function() {
+
+        // Revisar si hay datos en el formulario
+        if(form.usuario.value || form.contraseña.value) {
+
+            // Limpiar los campos
+            form.usuario.value = '';
+            form.contraseña.value = '';
+
+        }
+
+    }
+
+</script>
+
+<script>
+    function validarInput(input) {
+        var regex = /[\w@.]/; // Permite letras, números, @ y .
+        return regex.test(input);
+    }
+</script>
+
+<script>
+    window.onload = function() {
+        var inputs = document.getElementsByClassName('form-control');
+        for (var i = 0; i < inputs.length; i++) {
+            inputs[i].onpaste = function(e) {
+                e.preventDefault();
+            }
+        }
+    }
+</script>
 
 <!-- / Content -->
 

@@ -113,11 +113,12 @@ use Illuminate\Support\Facades\Route;
 
         //Carrera por Area
 
-        Route::get('/carreras/{id_area}', '\App\Http\Controllers\AreaAcademicaController@getCarreras');
+        Route::get('/carreras/{id_area}', '\App\Http\Controllers\AreaAcademicaController@getCarreras')->name('area_academica.getCarreras');
 
 
-            Route::resource('estudiante', \App\Http\Controllers\EstudianteController::class);
-            Route::get('/estudiantes/count', '\App\Http\Controllers\EstudianteController@countEstudiantes');
+
+        Route::resource('estudiante', \App\Http\Controllers\EstudianteController::class);
+            Route::get('/estudiantes/count', '\App\Http\Controllers\EstudianteController@countEstudiantes') -> name('estudiante.countEstudiantes');
             Route::get('/search', '\App\Http\Controllers\EstudianteController@search')->name('estudiante.search');
 
     });

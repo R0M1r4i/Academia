@@ -355,7 +355,6 @@ class EstudianteController extends Controller
     }
 
 
-
     public function countEstudiantes() {
         $count = Estudiante::count();
         return response()->json($count);

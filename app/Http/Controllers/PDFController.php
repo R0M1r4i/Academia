@@ -120,7 +120,8 @@ class PDFController extends Controller
             ->build();
 
         // Guarda el código QR como archivo PNG
-        $qrCodePath = 'D:\xammp\htdocs\academia_laravel\public\img/qr_estudiante.png';
+        $qrCodePath = env('QR_DIRECTORY') . '/qr_estudiante.png';
+
         $qrCode->saveToFile($qrCodePath);
 
         // Agrega el código QR al PDF
