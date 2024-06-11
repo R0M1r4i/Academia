@@ -89,7 +89,7 @@
                                     <!-- datos principales -->
 
                                     <div class="modal-body">
-                                        <form id="form-editar" action="{{ route('curso.update', $carreras) }}" method="post">
+                                        <form id="form-editar" action="{{ route('carrera.update', $carreras) }}" method="post">
                                             @method('PUT')
                                             @csrf
 
@@ -103,7 +103,7 @@
 
                                                     <div class="col mb-0">
                                                         <label for="nameLarge" class="form-label">Area</label>
-                                                        <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example" name="area" required>
+                                                        <select class="form-select" id="area" aria-label="Default select example" name="area" required>
                                                             @foreach($area_academicas as $area_academica)
                                                                 <option value="{{ $area_academica->id_area }}">{{ $area_academica->nombre_area }}</option>
                                                             @endforeach
@@ -234,27 +234,23 @@
     </script>
 
     <script>
-        //asignar evento click a todos los botones con nombre de clase "btn-editar"
-        //Para este caso usaremos JQUERY
         $(document).on("click",".btn-editar",function(){
             //variables
-            let nombre_docente = $(this).data('nombre');
-            let apellido_docente = $(this).data('apellido');
-            let dni_docente = $(this).data('dni_docente');
-
+            let id_carrera = $(this).data('id');
+            let nombre_carrera = $(this).data('nombre');
+            let area_academica_id_area = $(this).data('area');
 
             //mostrar en los controles los valores de las variables
             //trabajar con el atributo "ID"
-            $("#txt-nombre").val(nombre_docente);
-            $("#txt-apellido").val(apellido_docente);
-            $("#txt-dni_docente").val(dni_docente);
-
+            $("#txt-nombre").val(nombre_carrera);
+            $("#area_academica").val(area_academica_id_area);
 
             // Actualizar la acción del formulario en el modal
-            let url = "{{ route('docente.update', ':dni_docente') }}";
-            url = url.replace(':dni_docente', dni_docente);
+            let url = "{{ route('carrera.update', ':id_carrera') }}";
+            url = url.replace(':id_carrera', id_carrera);
             $('#form-editar').attr('action', url);
         })
+
     </script>
 
 

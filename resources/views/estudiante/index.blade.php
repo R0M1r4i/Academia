@@ -458,6 +458,7 @@
 
                                                             />
                                                         </div>
+
                                                     </div>
                                                 </fieldset>
 
@@ -752,21 +753,19 @@
     <script>
         function updateCount() {
             $.get('{{ route('estudiante.countEstudiantes') }}', function(data) {
-                // Actualiza tu contador
+
                 $('#contador').text(data);
             });
         }
-
-        // Llama a la función
-        setInterval(updateCount, 1000);
+        $(document).ready(updateCount);
     </script>
 
     <script>
-        // Write on keyup event of keyword input element
+
         $(document).ready(function(){
             $("#search2").keyup(function(){
                 _this = this;
-                // Show only matching TR, hide rest of them
+
                 $.each($("#mytable2 tbody tr"), function() {
                     if($(this).text().toLowerCase().indexOf($(_this).val().toLowerCase()) === -1)
                         $(this).hide();

@@ -27,7 +27,6 @@
                     </button>
                 </div>
 
-
                 <!-- Striped Rows -->
                 <div class="card">
                     <div class="table-responsive text-nowrap">
@@ -102,7 +101,7 @@
                                                     <div class="col mb-0">
                                                         <label for="nameLarge" class="form-label">Nombre</label>
                                                         <input type="text" id="txt-nombre" class="form-control" placeholder="Nombre" name="nombre" required
-                                                               onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || event.charCode == 32)" />
+                                                               onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || event.charCode == 32 || event.charCode == 241 || event.charCode == 209)" />
                                                     </div>
 
                                                 </div>
@@ -161,7 +160,7 @@
                                                     <div class="col mb-0">
                                                         <label for="nameLarge" class="form-label">Nombre</label>
                                                         <input type="text"  class="form-control" placeholder="Nombre" name="nombre" required
-                                                               onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || event.charCode == 32)"
+                                                               onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || event.charCode == 32 || event.charCode == 241 || event.charCode == 209)"
                                                         />
                                                     </div>
 
@@ -190,6 +189,7 @@
                                             </div>
                                         </form>
                                     </div>
+
                                 </div>
                             </div>
                         </div>

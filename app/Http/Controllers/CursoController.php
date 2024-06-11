@@ -19,7 +19,7 @@ class CursoController extends Controller
      */
     public function index()
     {
-        $cursos = curso::with('area_academica')->paginate(1);
+        $cursos = curso::with('area_academica')->paginate(10);
         $docentes = docente::all();
         $ciclos = ciclo::all();
         $area_academicas =area_academica::all();
@@ -49,14 +49,15 @@ class CursoController extends Controller
 
         $request->merge(['id_curso' => $nuevoId]);
         $request->merge(['nombre_curso' => strtoupper($request->input('nombre'))]);
-        $request->merge(['docente_id_docente' => $request->input('docente')]);
+        $request->merge(['docente_dni_docente' => $request->input('docente')]);
         $request->merge(['ciclo_id_ciclo' => $request->input('ciclo')]);
 
         // Crea el curso y guárdalo en la base de datos
+
         $curso = Curso::create($request->all());
 
         // Ahora que el curso se ha guardado en la base de datos, puedes adjuntar las áreas académicas
-        $areasSeleccionadas = $request->input('area_academica'); // Suponiendo que el nombre del campo de selección de áreas es 'areas'
+        $areasSeleccionadas = $request->input('area_academica');
 
         // Verifica si se seleccionó alguna área académica antes de intentar adjuntarlas
         if ($areasSeleccionadas) {
@@ -89,7 +90,7 @@ class CursoController extends Controller
         $curso = curso::find($id);
 
         $curso->nombre_curso =strtoupper($request-> input('nombre'));
-        $curso -> docente_id_docente = $request ->input('docente');
+        $curso -> docente_dni_docente = $request ->input('docente');
         $curso -> ciclo_id_ciclo = $request ->input('ciclo');
 
         $curso->save();

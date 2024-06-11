@@ -47,7 +47,7 @@
                             <tbody class="table-border-bottom-0">
                             @forelse($cursos as $curso)
                                 <tr>
-                                    <td> {{ $curso ->id_curso}} </td>
+
                                     <td> {{ $curso ->nombre_curso }} </td>
 
                                     <td>{{ $curso->docente->nombre_docente ?? 'N/A' }} </td>
@@ -112,7 +112,7 @@
 
                                                     <div class="col mb-0">
                                                         <label for="nameLarge" class="form-label">Docente</label>
-                                                        <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example" name="docente" required>
+                                                        <select class="form-select" id="txt-docente" aria-label="Default select example" name="docente" required>
                                                             @foreach($docentes as $docente)
                                                                 <option value="{{ $docente->dni_docente }}">{{ $docente->nombre_docente }}</option>
                                                             @endforeach
@@ -122,45 +122,29 @@
                                                 <div class="row g-2">
                                                     <div class="col mb-0">
                                                         <label for="emailLarge" class="form-label">Ciclo</label>
-                                                        <input type="text" id="txt-dni_docente" class="form-control" placeholder="DNI" name="dni_docente"/>
+                                                        <select class="form-select" id="txt-ciclo" aria-label="Default select example" name="ciclo" required>
+                                                            @foreach($ciclos as $ciclo)
+                                                                <option value="{{ $ciclo->id_ciclo }}">{{ $ciclo->nombre_ciclo }}</option>
+                                                            @endforeach
+                                                        </select>
                                                     </div>
                                                     <div class="col mb-0">
                                                         <label for="dobLarge" class="form-label">Area</label>
-                                                        <input type="text" id="txt-celular" class="form-control" name="celular" placeholder="Ingresar Celular" />
+                                                        <div>
+
+                                                                @foreach($area_academicas as $area_academica)
+                                                                    <input type="checkbox" id="area_academica{{$area_academica->id_area }}" name="area_academica[]" value="{{ $area_academica->id_area }}"
+                                                                        {{ in_array($area_academica->id_area, old('area_academica', $curso->area_academica->pluck('id_area')->toArray())) ? 'checked' : '' }}>
+                                                                    <label for="area_academica{{ $area_academica->id_area }}">{{ $area_academica->nombre_area }}</label><br>
+                                                                @endforeach
+
+                                                        </div>
                                                     </div>
                                                 </div>
 
                                             </fieldset>
 
                                             <!-- Datos Extras -->
-
-                                            <fieldset>
-                                                <legend class="mt-1" style="text-align: center">Horario</legend>
-                                                <div class="row g-2">
-                                                    <div class="col mb-0">
-                                                        <label for="emailLarge" class="form-label">Horario Inicial</label>
-                                                        <input type="time" id="txt-horario_inicio" class="form-control" name="horario_inicio" placeholder="horario_inicio"/>
-                                                    </div>
-                                                    <div class="col mb-0">
-                                                        <label for="dobLarge" class="form-label">Horario Final</label>
-                                                        <input type="time" id="txt-horario_final" class="form-control" name="horario_final" placeholder="horario_final" required/>
-                                                    </div>
-                                                </div>
-
-                                            </fieldset>
-
-                                            <fieldset>
-                                                <legend class="mt-1" style="text-align: center">Puntaje</legend>
-                                                <div class="row g-2">
-                                                    <div class="col mb-0">
-                                                        <label for="dobLarge" class="form-label">Rendimiento</label>
-                                                        <input type="text" id="txt-rendimiento" class="form-control" placeholder="Rendimiento" name="rendimiento" readonly/>
-                                                    </div>
-                                                    <div class="col mb-0">
-
-                                                    </div>
-                                                </div>
-                                            </fieldset>
 
                                             <div class="modal-footer mt-1   ">
                                                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
@@ -310,38 +294,29 @@
     </script>
 
     <script>
-        //asignar evento click a todos los botones con nombre de clase "btn-editar"
-        //Para este caso usaremos JQUERY
+
         $(document).on("click",".btn-editar",function(){
             //variables
-            let nombre_docente = $(this).data('nombre');
-            let apellido_docente = $(this).data('apellido');
-            let dni_docente = $(this).data('dni_docente');
-            let celular = $(this).data('celular');
-            let rendimiento = $(this).data('rendimiento');
-            let horario_inicio = $(this).data('horario_inicio')
-            let horario_final = $(this).data('horario_final');
-
-
+            let id_curso = $(this).data('id');
+            let nombre_curso =$(this).data('nombre')
+            let docente_dni_docente = $(this).data('docente');
+            let ciclo_id_ciclo = $(this).data('ciclo');
+            let area_academica = $(this).data('area_academica');
 
             //mostrar en los controles los valores de las variables
             //trabajar con el atributo "ID"
-            $("#txt-nombre").val(nombre_docente);
-            $("#txt-apellido").val(apellido_docente);
-            $("#txt-dni_docente").val(dni_docente);
-            $("#txt-celular").val(celular);
-            $("#txt-direccion").val(rendimiento);
-            $("#txt-horario_inicio").val(horario_inicio);
-            $("#txt-horario_final").val(horario_final);
-
-
-
+            $("#txt-nombre").val(nombre_curso);
+            $("#txt-docente").val(docente_dni_docente);
+            $("#txt-ciclo").val(ciclo_id_ciclo);
+            $("#area_academica").val(area_academica);
 
             // Actualizar la acción del formulario en el modal
-            let url = "{{ route('docente.update', ':dni_docente') }}";
-            url = url.replace(':dni_docente', dni_docente);
+            let url = "{{ route('curso.update', ':id_curso') }}";
+            url = url.replace(':id_curso', id_curso);
             $('#form-editar').attr('action', url);
         })
+
+
     </script>
 
 

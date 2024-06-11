@@ -45,6 +45,8 @@ use Illuminate\Support\Facades\Route;
 
         Route::put('especialidad/{especialidad}',[\App\Http\Controllers\EspecialidadController::class,'update']);
         Route::put('/estudiante/{estudiante}', [\App\Http\Controllers\EstudianteController::class, 'update']);
+        Route::put('/curso/{curso}', [\App\Http\Controllers\CursoController::class, 'update']);
+        Route::put('/carrera/{carrera}', [\App\Http\Controllers\CarreraController::class, 'update']);
 
         //FILTROS
 
