@@ -1,3 +1,8 @@
+SISTEMA ENFOCADO EN LA GESTION ACADEMICA CON REGISTRO DE NOTAS, ASISTENCIAS POR CODIGO, SCANER DE ASISTENCIAS, CARNETS, CONTROL PARENTAL, NOTIFCACIONES A LOS PADRES VIA WHATSAPP API, ETC
+
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
