@@ -20,7 +20,7 @@ class WaController
             return '51' . $telefono;
         }, $telefonos);
 
-        $token = 'EAFjXYPGxn3oBO5TzXlw8ZApuBwZCZBMOQKrIUVkHZBCZAe88vQj7Pq6AfTfYX0YthRL0ZCVgZBDZBQdT7DnlOD1dkx571kDgTP69181ZAAtBCnxoC0zCSm4mXKFo4syxTVbLAESJW9nrMhhF2Awgq1qZAZB7hmIrlY1mTpXctXpeohKJJpvr0OEk9mSpmZCjKTdEbHpr';
+        $token = '';
         $url = 'https://graph.facebook.com/v18.0/239170182621200/messages';
 
         $errores = [];
